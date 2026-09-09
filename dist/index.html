@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sideline</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <span id="title">待办</span>
+      <span id="collapsed-hint" title="点击展开">«</span>
+      <span id="actions">
+        <button id="btn-collapse" title="收起/展开" aria-label="收起/展开" disabled>«</button>
+        <button id="btn-quit" title="退出" aria-label="退出">×</button>
+      </span>
+    </header>
+
+    <div id="recovery-panel">
+      <div id="todos-load-error" class="load-error" role="alert" hidden>
+        <strong>待办读取失败，未覆盖原文件</strong>
+        <div id="todos-load-message" class="error-detail"></div>
+        <button id="todos-retry-load">重新读取</button>
+        <button id="todos-recover">保留原文件并恢复备份</button>
+      </div>
+      <div id="settings-load-error" class="load-error" role="alert" hidden>
+        <strong>设置读取失败，未写入默认值</strong>
+        <div id="settings-load-message" class="error-detail"></div>
+        <button id="settings-retry-load">重新读取设置</button>
+      </div>
+    </div>
+
+    <div id="addbar">
+      <input id="new-todo" type="text" placeholder="添加待办，回车确认" aria-label="新增待办" autocomplete="off" disabled />
+      <button id="btn-add" title="添加" aria-label="添加" disabled>＋</button>
+    </div>
+
+    <main id="task-scroll" aria-label="待办列表">
+      <ul id="list" aria-label="未完成"></ul>
+      <div id="empty-list" hidden>暂无待办</div>
+      <section id="completed-section" aria-label="已完成待办">
+        <button id="completed-toggle" aria-expanded="false" aria-controls="completed-list" disabled>
+          <span id="completed-arrow" aria-hidden="true">▸</span>
+          <span id="completed-count">已完成 0</span>
+        </button>
+        <ul id="completed-list" hidden></ul>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <div id="count"></div>
+      <div id="undo-bar"><span id="undo-message"></span><button id="undo-delete" title="撤销删除（Ctrl+Z）" hidden>撤销删除</button></div>
+      <div class="save-line"><span id="todos-status" role="status" aria-live="polite">待办读取中…</span><button id="todos-retry-save" hidden>重试保存</button><button id="todos-preserve-reload" title="先把未保存改动另存为独立 JSON，再读取当前文件" hidden>保留改动后重读</button></div>
+      <div class="save-line"><span id="settings-status" role="status" aria-live="polite">设置读取中…</span><button id="settings-retry-save" hidden>重试设置</button><button id="settings-preserve-reload" title="先把未保存设置另存为独立 JSON，再读取当前文件" hidden>保留设置后重读</button></div>
+      <div id="exit-error" class="error" role="alert" hidden></div>
+      <div id="recovery-notice" class="error-detail" role="status" hidden></div>
+    </footer>
+  </div>
+
+  <div id="ctx-menu" class="hidden" aria-label="应用菜单">
+    <button class="ctx-item" data-action="right">停靠右侧 ✓</button>
+    <button class="ctx-item" data-action="left">停靠左侧</button>
+    <div class="ctx-sep"></div>
+    <button class="ctx-item" data-action="ontop">置顶显示 ✓</button>
+    <div class="ctx-sep"></div>
+    <button class="ctx-item ctx-danger" data-action="quit">退出</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

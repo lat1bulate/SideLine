@@ -1,0 +1,53 @@
+# Rust build output and generated schemas
+/src-tauri/target/
+/src-tauri/gen/
+
+# Local dependencies, caches and test browser profiles
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+/tests/artifacts/
+/backups/
+
+# Credentials and local application data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/todos.json*
+/settings.json*
+
+# Local build/debug output (dist/ contains actual frontend source: keep it)
+*.exe
+*.dll
+*.pdb
+*.log
+*.zip
+*.7z
+/dock_debug.txt
+/exe_icon.ico
+/extracted.ico
+/extracted_icon.png
+/final_icon.ico
+/new_exe_icon.ico
+/transparent.ico
+
+# Historical machine-specific diagnostics and superseded icon experiments
+/check_*.ps1
+/extract_icon*.ps1
+/test_collapse.ps1
+/trace_*.ps1
+/fix_icon.py
+/fix_icon_winapi.py
+/gen_icon.py
+/gen_icon2.py
+/gen_ico_bmp.py
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
